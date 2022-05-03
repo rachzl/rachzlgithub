@@ -12,9 +12,13 @@ function setup() {
     myCanvas = createCanvas(512, 512);
     myCanvas.hide();
     createPullDownForCameraSelection()
-    //let captureConstraints = allowCameraSelection(myCanvas.width, myCanvas.height);
-    // myVideo = createCapture(captureConstraints);
-    //below is simpler if you don't need to select Camera because default is okay
+    videoOptions = {
+        audio: false, video: {
+            width: myCanvas.width,
+            height: myCanvas.height,
+            sourceId: preferredCam
+        }
+    }
     myVideo = createCapture(VIDEO);
     myVideo.size(640, 480);
     myVideo.elt.muted = true;
