@@ -55,7 +55,7 @@ function creatNewVideoObject(videoObject, id) {  //this is for remote and local
     scene.add(myAvatarObj);
 
     people.push({ "object": myAvatarObj, "texture": myTexture, "id": id, "videoObject": videoObject });
-    positionEveryoneOnACircle();
+    positionOnCircle();
     animate();
 }
 
@@ -88,10 +88,10 @@ function gotDisconnect(id) {
             break;
         }
     }
-    positionEveryoneOnACircle();    //re space everyone
+    positionOnCircle();    //re space everyone
 }
 
-function positionEveryoneOnACircle() {
+function positionOnCircle() {
     //position it on a circle around the middle
     let radiansPerPerson = Math.PI / people.length;  //spread people out over 180 degrees?
     for (var i = 0; i < people.length; i++) {
