@@ -141,29 +141,6 @@ function animate() {
 }
 
 
-function addAudioStream() {
-    // Need to use the callback to get at the audio/video stream
-    myAudio = createCapture(constraints, function (stream) {
-        // Get a stream from the canvas to send
-        let canvasStream = myCanvas.elt.captureStream(15);
-        // Extract the audio tracks from the stream
-        let audioTracks = stream.getAudioTracks();
-        // Use the first audio track, add it to the canvas stream
-        if (audioTracks.length > 0) {
-            canvasStream.addTrack(audioTracks[0]);
-        }
-        // Give the canvas stream to SimpleSimplePeer as a "CAPTURE" stream
-        let p5lm = new p5LiveMedia(this, "CAPTURE", canvasStream, myRoomName + "Audio");
-        p5lm.on('stream', gotAudioStream);
-    });
-
-    myAudio.elt.muted = true;
-    myAudio.hide();
-}
-
-function gotAudioStream() {
-
-}
 /////MOUSE STUFF  ///YOU MIGHT NOT HAVE TO LOOK DOWN BELOW HERE VERY MUCH
 
 var onMouseDownMouseX = 0, onMouseDownMouseY = 0;
